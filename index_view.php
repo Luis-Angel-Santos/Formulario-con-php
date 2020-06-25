@@ -9,14 +9,24 @@
 </head>
 <body>
     <div class="wrap">
-        <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>">
-            <input type="text" name="nombre" id="nombre" class="form-control" placeholder="Nombre:">
+        <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="post">
+            <input type="text" name="nombre" id="nombre" class="form-control" placeholder="Nombre:" value="<?php if(!$enviado && isset($nombre)) echo $nombre ?>">
 
-            <input type="email" name="correo" id="correo" class="form-control" placeholder="Correo">
+            <input type="email" name="correo" id="correo" class="form-control" placeholder="Correo" value="<?php if(!$enviado && isset($correo)) echo $nombre ?>">
 
-            <textarea name="mensaje" id="mensaje" cols="30" rows="10" class="form-control" placeholder="Mensaje:"></textarea>
+            <textarea name="mensaje" id="mensaje" cols="30" rows="10" class="form-control" placeholder="Mensaje:" ><?php if(!$enviado && isset($nombre)) echo $nombre ?></textarea>
 
-            <input type="submit" value="Enviar Correo" class="btn btn-primary" name="submmit">
+            <?php if (!empty($errores)): ?>
+                <div class="alert success">
+                    <?php echo $errores; ?>
+                </div>
+            <?php elseif($enviado): ?>
+                <div class="alert success">
+                    <p>Enviado Correctamente</p>
+                </div>
+            <?php endif ?>
+
+            <input type="submit" value="Enviar Correo" class="btn btn-primary" name="submit">
         </form>
     </div>
 </body>
