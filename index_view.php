@@ -12,7 +12,7 @@
         <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>">
             <input type="text" name="nombre" id="nombre" class="form-control" placeholder="Nombre:">
 
-            <input type="text" name="correo" id="correo" class="form-control" placeholder="Correo">
+            <input type="email" name="correo" id="correo" class="form-control" placeholder="Correo">
 
             <textarea name="mensaje" id="mensaje" cols="30" rows="10" class="form-control" placeholder="Mensaje:"></textarea>
 
